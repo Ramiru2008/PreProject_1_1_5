@@ -20,7 +20,7 @@ public class UserDaoHibernateImpl implements UserDao {
                     "name VARCHAR(50) NOT NULL, lastName VARCHAR(50) NOT NULL, " +
                     "age TINYINT NOT NULL)").executeUpdate();
             System.out.println("Все хорошо!");
-            session.getTransaction().commit();
+            session.getTransaction().rollback();
         }
 
     }
@@ -31,7 +31,7 @@ public class UserDaoHibernateImpl implements UserDao {
             session.beginTransaction();
             session.createSQLQuery("DROP TABLE IF EXISTS users").executeUpdate();
             System.out.println("Удалено!");
-            session.getTransaction().commit();
+            session.getTransaction().rollback();
         }
 
     }
